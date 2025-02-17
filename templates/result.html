@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Path Results</title>
+  </head>
+  <body>
+    <h1>Calculated Paths</h1>
+    <p>{{ message }}</p>
+    <table border="1" cellpadding="5">
+      <tr>
+        <th>Start Point</th>
+        <th>Path</th>
+        <th>Total Distance</th>
+        <th>Pickup Point</th>
+      </tr>
+      {% for row in results %}
+      <tr>
+        <td>{{ row[0] }}</td>
+        <td>{{ row[1] }}</td>
+        <td>{{ row[2] }}</td>
+        <td>{{ row[3] }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+    <h2>Download CSV Files</h2>
+    <p>
+      <a href="data:text/csv;charset=utf-8,{{ results_csv|urlencode }}" download="paths_and_pickups.csv">
+        Download Results CSV
+      </a>
+    </p>
+    <p>
+      <a href="data:text/csv;charset=utf-8,{{ input_csv|urlencode }}" download="input_points.csv">
+        Download Input CSV
+      </a>
+    </p>
+
+    <h1>Callsign Paths</h1>
+    <table border="1" cellpadding="5">
+      <tr>
+        <th>Callsign Path</th>
+      </tr>
+      {% for call_path in callsign_results %}
+      <tr>
+        <td>{{ call_path|join(', ') }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+    <h2>Download Callsign CSV</h2>
+    <p>
+      <a href="data:text/csv;charset=utf-8,{{ callsign_csv|urlencode }}" download="callsign_paths.csv">
+        Download Callsign CSV
+      </a>
+    </p>
+  </body>
+</html>

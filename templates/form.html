@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Path Calculator</title>
+    <script>
+      function addRow() {
+        var table = document.getElementById("pointsTable");
+        var row = table.insertRow(-1);
+        row.innerHTML = `
+          <td><input type="text" name="point[]" placeholder="Point"></td>
+          <td><input type="number" name="x[]" placeholder="X Coordinate"></td>
+          <td><input type="number" name="y[]" placeholder="Y Coordinate"></td>
+          <td><input type="text" name="callsign[]" placeholder="Callsign (Optional)"></td>
+        `;
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Enter Points &amp; Parameters</h1>
+    <form method="post" enctype="multipart/form-data">
+      <h3>Upload CSV (Optional):</h3>
+      <input type="file" name="csv_upload" accept=".csv">
+      <hr>
+      <h3>Or Enter Points Manually:</h3>
+      <table id="pointsTable" border="1" cellpadding="5">
+        <tr>
+          <th>Point</th>
+          <th>X Coordinate</th>
+          <th>Y Coordinate</th>
+          <th>Callsign</th>
+        </tr>
+        <tr>
+          <td><input type="text" name="point[]" placeholder="Point"></td>
+          <td><input type="number" name="x[]" placeholder="X Coordinate"></td>
+          <td><input type="number" name="y[]" placeholder="Y Coordinate"></td>
+          <td><input type="text" name="callsign[]" placeholder="Callsign (Optional)"></td>
+        </tr>
+      </table>
+      <button type="button" onclick="addRow()">Add Row</button>
+      <br><br>
+      Minimum Distance Between Points: <input type="number" name="min_distance" value="700"><br>
+      Maximum Total Distance: <input type="number" name="max_distance" value="5000"><br><br>
+      <input type="submit" value="Submit">
+    </form>
+  </body>
+</html>
