@@ -11,15 +11,21 @@
           <td><input type="number" name="x[]" placeholder="X Coordinate"></td>
           <td><input type="number" name="y[]" placeholder="Y Coordinate"></td>
           <td><input type="text" name="callsign[]" placeholder="Callsign (Optional)"></td>
+          <td><button type="button" onclick="deleteRow(this)">Delete</button></td>
         `;
+      }
+
+      function deleteRow(btn) {
+        var row = btn.parentNode.parentNode;
+        row.parentNode.removeChild(row);
       }
     </script>
   </head>
   <body>
     <h1>Enter Points &amp; Parameters</h1>
     <form method="post" enctype="multipart/form-data">
-      <h3>Upload CSV (Optional):</h3>
-      <input type="file" name="csv_upload" accept=".csv">
+      <h3>Upload CSV or XLSX (Optional):</h3>
+      <input type="file" name="csv_upload" accept=".csv,.xlsx">
       <hr>
       <h3>Or Enter Points Manually:</h3>
       <table id="pointsTable" border="1" cellpadding="5">
@@ -28,18 +34,21 @@
           <th>X Coordinate</th>
           <th>Y Coordinate</th>
           <th>Callsign</th>
+          <th>Action</th>
         </tr>
         <tr>
           <td><input type="text" name="point[]" placeholder="Point"></td>
           <td><input type="number" name="x[]" placeholder="X Coordinate"></td>
           <td><input type="number" name="y[]" placeholder="Y Coordinate"></td>
           <td><input type="text" name="callsign[]" placeholder="Callsign (Optional)"></td>
+          <td><button type="button" onclick="deleteRow(this)">Delete</button></td>
         </tr>
       </table>
       <button type="button" onclick="addRow()">Add Row</button>
       <br><br>
       Minimum Distance Between Points: <input type="number" name="min_distance" value="700"><br>
-      Maximum Total Distance: <input type="number" name="max_distance" value="5000"><br><br>
+      Maximum Total Distance: <input type="number" name="max_distance" value="5000"><br>
+      Number of Numbered Points: <input type="number" name="num_numbered_points" value="3"><br><br>
       <input type="submit" value="Submit">
     </form>
   </body>
